@@ -31,9 +31,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'rails_12factor', group: :production
 gem 'responders'
 
-
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development, :test do

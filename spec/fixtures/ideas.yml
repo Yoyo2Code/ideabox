@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: "Big Wheel"
+  body: "Something big"
+  quality: "genius"
+
+two:
+  title: "Blind eye"
+  body: "Make yourself blind"
+  quality: "plausible"
+
+three:
+  title: "Cookie"
+  body: "Something to eat"
+  quality: "swill"
