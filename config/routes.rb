@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json'} do
     namespace :v1 do
-      get 'ideas', to: "ideas#index"
+      resources :ideas
+      # get '/ideas', to: "ideas#index"
     end
   end
 end

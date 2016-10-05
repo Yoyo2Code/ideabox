@@ -43,14 +43,6 @@ function renderIdeas( ideaData ){
   $("#ideas").append( ideaData )
 }
 
-function createIdea(){
-  var ideaTitle = $("#idea-title").val();
-  var ideaBody = $("#idea-body").val();
-
-
-}
-
-
 $(document).ready(function(){
 
   fetchIdeas();
