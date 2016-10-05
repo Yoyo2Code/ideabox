@@ -9,7 +9,11 @@ class Api::V1::IdeasController < ApplicationController
     render json: Idea.create(idea_params)
   end
 
-  def delete
+  def update
+    render json: Idea.update(params[:id], idea_params)
+  end
+
+  def destroy
     render json: Idea.delete(params[:id])
   end
 
