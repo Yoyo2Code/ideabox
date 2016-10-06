@@ -1,7 +1,7 @@
 function fetchIdeas(){
   $.ajax({
     method: "GET",
-    url: "http://aqueous-earth-74411.herokuapp.com/api/v1/ideas"
+    url: "/api/v1/ideas"
   }).then(collectIdeas)
     .then(renderIdeas)
 }
@@ -16,7 +16,7 @@ function createIdea(){
       }
     }
       $.ajax({
-        url: "http://aqueous-earth-74411.herokuapp.com/api/v1/ideas",
+        url: "/api/v1/ideas",
         data: ideaParams,
         type: "POST"
       }).then(createIdeaHTML)
@@ -31,7 +31,7 @@ function deleteIdea(){
   $("#ideas").on("click", "#delete-idea", function(){
     var $idea = $(this).closest(".idea");
     $.ajax({
-      url: "http://aqueous-earth-74411.herokuapp.com/api/v1/ideas/" + $idea.data("id") + ".json",
+      url: "/api/v1/ideas/" + $idea.data("id") + ".json",
       type: "DELETE"
     }).then(function(){
       $idea.remove()
@@ -77,7 +77,7 @@ function updateIdea(){
     };
 
       $.ajax({
-        url: "http://aqueous-earth-74411.herokuapp.com/api/v1/ideas/" + ideaId,
+        url: "/api/v1/ideas/" + ideaId,
         data: ideaParams,
         type: "PUT"
       })
@@ -142,7 +142,7 @@ function updateIdeaQuality(ideaId, newQuality) {
     };
 
     $.ajax({
-      url: "http://aqueous-earth-74411.herokuapp.com/api/v1/ideas/" + ideaId,
+      url: "/api/v1/ideas/" + ideaId,
       data: ideaParams,
       type: "PUT"
     })
@@ -228,4 +228,5 @@ $(document).ready(function(){
   likeButton();
   dislikeButton();
   searchParams();
-})
+
+});

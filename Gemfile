@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rails_12factor', group: :production
 gem 'responders'
-gem 'selenium-webdriver'
 
 
 group :test do
@@ -39,6 +38,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'byebug', platform: :mri
   gem 'database_cleaner'
