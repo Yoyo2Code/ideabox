@@ -20,6 +20,9 @@ function createIdea(){
         type: "POST"
       }).then(createIdeaHTML)
         .then(renderIdeas)
+
+        $("#idea-title").val("")
+        $("#idea-body").val("")
   });
 }
 
@@ -179,8 +182,8 @@ function createIdeaHTML( idea ){
     + "<p id='quality'>"
     + idea.quality
     + "</p>"
-    + "<input type='image' id='like' value='like' src='' />"
-    + "<input type='image' id='dislike' value='dislike' src='' />"
+    + "<button id='like'>Thumbs Up</button>"
+    + "<button id='dislike'>Thumbs Down</button>"
     + "<button id='delete-idea' name='button-fetch'>Delete</button>"
     + "</div>"
   )
