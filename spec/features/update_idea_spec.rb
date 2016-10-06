@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "Edit Idea", :type => :feature, :js => true do
   it "can edit an idea" do
     Idea.delete_all
-
     idea = Idea.create(title: "something", body: "new")
 
     visit '/'
