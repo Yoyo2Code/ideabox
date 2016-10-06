@@ -1,8 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Decrease Idea Rating", :type => :feature, :js => true do
-  xit "can thumbs down a rating" do
-    item = Item.create(
+  it "can thumbs down a rating" do
+    Idea.delete_all
+    idea = Idea.create(
                        title: "hi",
                        body: "a greeting",
                        quality: "genius"
