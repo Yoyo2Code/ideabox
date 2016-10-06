@@ -1,13 +1,14 @@
 function fetchIdeas(){
   $.ajax({
     method: "GET",
-    url: "http://localhost:3000/api/v1/ideas"
+    url: "/api/v1/ideas"
   }).then(collectIdeas)
     .then(renderIdeas)
 }
 
 function createIdea(){
   $("#idea-form").on('click', '#create-idea', function(){
+    if($("#idea-title").val() != "" || $("#idea-body").val() != "")
     var ideaParams = {
       idea: {
         title: $("#idea-title").val(),
@@ -15,11 +16,14 @@ function createIdea(){
       }
     }
       $.ajax({
-        url: "http://localhost:3000/api/v1/ideas",
+        url: "/api/v1/ideas",
         data: ideaParams,
         type: "POST"
       }).then(createIdeaHTML)
         .then(renderIdeas)
+
+        $("#idea-title").val("")
+        $("#idea-body").val("")
   });
 }
 
@@ -27,8 +31,8 @@ function deleteIdea(){
   $("#ideas").on("click", "#delete-idea", function(){
     var $idea = $(this).closest(".idea");
     $.ajax({
-      url: "http://localhost:3000/api/v1/ideas/" + $idea.data("id") + ".json",
-      type: "delete"
+      url: "/api/v1/ideas/" + $idea.data("id") + ".json",
+      type: "DELETE"
     }).then(function(){
       $idea.remove()
     })
@@ -73,7 +77,7 @@ function updateIdea(){
     };
 
       $.ajax({
-        url: "http://localhost:3000/api/v1/ideas/" + ideaId,
+        url: "/api/v1/ideas/" + ideaId,
         data: ideaParams,
         type: "PUT"
       })
@@ -122,7 +126,14 @@ function likeButton(){
 
     var newQuality = increaseQuality(qualityText)
     if(newQuality != undefined){
+      updateIdeaQuality(ideaId, newQuality);
+    };
 
+    $idea.find("#quality").text(newQuality)
+  })
+}
+
+function updateIdeaQuality(ideaId, newQuality) {
     var ideaParams = {
       id: ideaId,
       idea: {
@@ -131,14 +142,10 @@ function likeButton(){
     };
 
     $.ajax({
-      url: "http://localhost:3000/api/v1/ideas/" + ideaId,
+      url: "/api/v1/ideas/" + ideaId,
       data: ideaParams,
       type: "PUT"
     })
-  }
-
-    $idea.find("#quality").text(newQuality)
-  })
 }
 
 function dislikeButton(){
@@ -151,20 +158,8 @@ function dislikeButton(){
 
     var newQuality = decreaseQuality(qualityText)
     if(newQuality != undefined){
-
-    var ideaParams = {
-      id: ideaId,
-      idea: {
-        quality: newQuality
-      }
+      updateIdeaQuality(ideaId, newQuality);
     };
-
-    $.ajax({
-      url: "http://localhost:3000/api/v1/ideas/" + ideaId,
-      data: ideaParams,
-      type: "PUT"
-    })
-  }
 
     $idea.find("#quality").text(newQuality)
   })
@@ -188,8 +183,8 @@ function createIdeaHTML( idea ){
     + "<p id='quality'>"
     + idea.quality
     + "</p>"
-    + "<input type='image' id='like' value='like' src='' />"
-    + "<input type='image' id='dislike' value='dislike' src='' />"
+    + "<button id='like'>Thumbs Up</button>"
+    + "<button id='dislike'>Thumbs Down</button>"
     + "<button id='delete-idea' name='button-fetch'>Delete</button>"
     + "</div>"
   )
@@ -233,4 +228,5 @@ $(document).ready(function(){
   likeButton();
   dislikeButton();
   searchParams();
-})
+
+});
