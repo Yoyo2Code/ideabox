@@ -8,6 +8,7 @@ function fetchIdeas(){
 
 function createIdea(){
   $("#idea-form").on('click', '#create-idea', function(){
+    if($("#idea-title").val() != "" || $("#idea-body").val() != "")
     var ideaParams = {
       idea: {
         title: $("#idea-title").val(),

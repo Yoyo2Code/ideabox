@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rails_12factor', group: :production
 gem 'responders'
+gem 'selenium-webdriver'
+
 
 group :test do
   gem 'rspec-rails'
@@ -37,8 +39,10 @@ group :test do
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'capybara'
   gem 'byebug', platform: :mri
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :development do
