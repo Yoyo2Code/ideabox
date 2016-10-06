@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe "Create Idea", type: :feature, :js => true do
   it "can create an idea" do
+    Idea.delete_all
+    
     visit '/'
 
     fill_in 'idea-title', with: "new idea"

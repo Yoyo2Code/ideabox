@@ -35,13 +35,13 @@ gem 'responders'
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'byebug', platform: :mri
-  gem 'database_cleaner'
   gem 'launchy'
 end
 
