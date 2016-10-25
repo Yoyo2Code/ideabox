@@ -9,10 +9,14 @@ function fetchIdeas(){
 function createIdea(){
   $("#idea-form").on('click', '#create-idea', function(){
     if($("#idea-title").val() != "" && $("#idea-body").val() != "") {
+
+    var $ideaTitle = $("#idea-title");
+    var $ideaBody  = $("#idea-body");
+
     var ideaParams = {
       idea: {
-        title: $("#idea-title").val(),
-        body: $("#idea-body").val()
+        title: $ideaTitle.val(),
+        body: $ideaBody.val()
       }
     };
       $.ajax({
@@ -22,8 +26,8 @@ function createIdea(){
       }).then(createIdeaHTML)
         .then(renderIdeas)
 
-        $("#idea-title").val("")
-        $("#idea-body").val("")
+        $ideaTitle.val("")
+        $ideaBody.val("")
       };
   });
 }
